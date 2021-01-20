@@ -1,0 +1,15 @@
+# Node 
+node_modules/
+
+# Yalc library for testing
+yalc.lock
+.yalc/
+
+# Env Files
+.env
+
+# Mac OS
+.DS_Store
+
+# Build Folder
+build/
