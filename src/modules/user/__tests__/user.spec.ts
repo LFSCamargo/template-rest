@@ -69,7 +69,7 @@ describe("User module testing", () => {
       authorization: "Invalid Token",
     });
     expect(meResponse.status).toBe(401);
-    expect(meResponse.body.message).toBe("Not Authorized");
+    expect(meResponse.body.message).toBe("Invalid Token");
   });
 
   it("Testing passing the register without the fields", async () => {

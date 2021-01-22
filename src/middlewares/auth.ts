@@ -21,7 +21,7 @@ export const authorizateUser = async (
     }
     if (!R.includes("Bearer ", authorization)) {
       res.status(401).json({
-        message: "Not Authorized",
+        message: "Invalid Token",
       });
       return;
     }
@@ -36,7 +36,6 @@ export const authorizateUser = async (
     req.user = user;
     next();
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       message: "Internal Server Error",
     });
