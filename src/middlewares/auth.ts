@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import * as R from "ramda";
 import { RequestWithContext } from "~/typings";
 import { Response, NextFunction } from "express";
 import User from "~/modules/user/model";
@@ -15,6 +16,12 @@ export const authorizateUser = async (
     if (!authorization) {
       res.status(401).json({
         message: "Not Authorized",
+      });
+      return;
+    }
+    if (!R.includes("Bearer ", authorization)) {
+      res.status(401).json({
+        message: "Invalid Token",
       });
       return;
     }

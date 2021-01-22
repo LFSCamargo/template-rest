@@ -13,3 +13,6 @@ yalc.lock
 
 # Build Folder
 build/
+
+# Jest
+coverage/

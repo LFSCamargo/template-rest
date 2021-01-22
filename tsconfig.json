@@ -9,6 +9,7 @@
     "declaration": false,
     "noImplicitAny": true,
     "strictNullChecks": true,
+    "types": ["jest", "node"],
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
