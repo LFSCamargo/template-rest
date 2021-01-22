@@ -7,10 +7,11 @@ export const validateBody = <T extends ObjectSchema<any>>(
 ) => async (req: Request, res: Response, next: NextFunction) => {
   const resource = req.body;
   try {
-    await resourceSchema.validate(resource);
+    await resourceSchema.validate(resource, {
+      abortEarly: false,
+    });
     next();
   } catch (e) {
-    console.error(e);
     res.status(400).json({
       errors: e.errors,
       message: "Bad request, the request body is invalid",

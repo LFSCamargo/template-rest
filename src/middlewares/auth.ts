@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import * as R from "ramda";
 import { RequestWithContext } from "~/typings";
 import { Response, NextFunction } from "express";
 import User from "~/modules/user/model";
@@ -18,6 +19,12 @@ export const authorizateUser = async (
       });
       return;
     }
+    if (!R.includes("Bearer ", authorization)) {
+      res.status(401).json({
+        message: "Not Authorized",
+      });
+      return;
+    }
     const decoded: any = jwt.verify(authorization.substring(7), SECRET);
     const user = await User.findOne({ email: decoded.id });
     if (!user) {
@@ -29,6 +36,7 @@ export const authorizateUser = async (
     req.user = user;
     next();
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       message: "Internal Server Error",
     });

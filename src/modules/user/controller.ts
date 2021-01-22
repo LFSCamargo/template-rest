@@ -2,11 +2,13 @@ import * as R from "ramda";
 import { Request, Response } from "express";
 import User from "./model";
 import { RequestWithContext } from "~/typings";
-import { authenticate, signJWT } from "~/utils";
+import { authenticate, encryptPassword, signJWT } from "~/utils";
 
 export default {
   me: async (req: RequestWithContext, res: Response) => {
-    return res.status(200).json(R.omit(["password"], req.user));
+    return res
+      .status(200)
+      .json(R.pick(["name", "email", "_id", "picture", "birthDate"], req.user));
   },
   login: async (req: RequestWithContext, res: Response) => {
     const { email, password } = req.body;
@@ -36,7 +38,7 @@ export default {
 
     const user = new User({
       email,
-      password,
+      password: encryptPassword(password),
       name,
       birthDate,
       picture,
