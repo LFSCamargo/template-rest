@@ -27,8 +27,6 @@ describe("User module testing", () => {
   it("should return 400 if the user does not pass the required fields for /register", async () => {
     const register = await request.post("/register");
 
-    console.log(register.body);
-
     expect(register.status).toBe(400);
     expect(register.body.errors).toStrictEqual([
       "Email is a required field",
