@@ -3,6 +3,7 @@
     "target": "ESNext",
     "module": "commonjs",
     "allowJs": true,
+    "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

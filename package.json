@@ -11,7 +11,9 @@
     "start": "DEBUG=server* ts-node -r tsconfig-paths/register src/server.ts",
     "dev": "DEBUG=server* nodemon",
     "test": "jest --verbose --detectOpenHandles --forceExit",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "eslint:check": "eslint 'src/**/*.{ts,tsx}' --fix",
+    "ts:check": "tsc"
   },
   "dependencies": {
     "bcrypt": "5.0.0",
