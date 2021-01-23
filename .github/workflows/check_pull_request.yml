@@ -16,7 +16,7 @@ jobs:
           sudo apt-get install -y mongodb-org
           sudo apt-get install -y mongodb-org=3.6.14 mongodb-org-server=3.6.14 mongodb-org-shell=3.6.14 mongodb-org-mongos=3.6.14 mongodb-org-tools=3.6.14
       - name: Start MongoDB
-        run: sudo systemctl start mongod
+        run: sudo systemctl start mongodongod
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
